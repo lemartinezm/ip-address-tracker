@@ -3,17 +3,24 @@ import { useEffect, useState } from "react";
 export default function useIpData() {
   const [userData, setUserData] = useState(null);
   const [ipToTrack, setIpToTrack] = useState('');
+  const [domainToTrack, setDomainToTrack] = useState('')
 
   useEffect(() => {
     async function fetchUserData() {
-      const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_API_KEY}&ipAddress=${ipToTrack}`);
-      setUserData(await response.json());
+      await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_API_KEY}&ipAddress=${ipToTrack}&domain=${domainToTrack}`)
+        .then(async (res) => {
+          if (!res.ok) throw new Error('Something went wrong!');
+          return await res.json()
+        })
+        .then(setUserData)
+        .catch(err => alert('Something went wrong!'));
     }
     fetchUserData();
-  }, [ipToTrack]);
+  }, [ipToTrack, domainToTrack]);
 
   return {
     userData,
-    setIpToTrack
+    setIpToTrack,
+    setDomainToTrack
   };
 }
