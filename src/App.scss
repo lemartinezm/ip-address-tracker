@@ -1,0 +1,122 @@
+// Colors
+$very_dark_gray: hsl(0, 0%, 17%);
+$dark_gray: hsl(0, 0%, 59%);
+
+html {
+  font-size: 18px;
+  font-family: 'Rubik', sans-serif;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  min-height: 100vh;
+  background-image: url('./assets/pattern-bg.png');
+  background-repeat: no-repeat;
+  background-size: auto 300px;
+  background-position: top;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+
+  .container {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 32px;
+    gap: 32px;
+    box-sizing: border-box;
+
+    h1 {
+      color: white;
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    .input-container {
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+
+      input {
+        width: 100%;
+        border: none;
+        padding: 16px 66px 16px 16px;
+        font-size: 18px;
+        color: $very_dark_gray;
+        font-family: 'Rubik', sans-serif;
+
+        &::placeholder {
+          font-family: 'Rubik', sans-serif;
+        }
+
+        &[placeholder] {
+          text-overflow: ellipsis;
+        }
+      }
+
+      button {
+        background-color: black;
+        border: none;
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 50px;
+      }
+    }
+
+    .info-container {
+      z-index: 5;
+      background-color: white;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 32px;
+      min-height: 150px;
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        
+        h2 {
+          color: $dark_gray;
+          font-size: 13px;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+
+        p {
+          color: $very_dark_gray;
+          font-weight: 500;
+          font-size: 23px;
+        }
+      }
+    }
+  }
+
+  #spinner-container {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+  }
+}
