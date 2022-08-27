@@ -25,7 +25,7 @@ function App() {
           </button>
         </form>
 
-        <div className='info-container'>
+        <div className='info-container' style={userData ? {gridTemplateColumns: 'repeat(4, 1fr)'} : null}>
           {
             userData
               ? <>
@@ -33,14 +33,17 @@ function App() {
                   <h2>IP Address</h2>
                   <p>{userData.ip}</p>
                 </div>
+
                 <div className='info'>
                   <h2>Location</h2>
                   <p>{userData.location.city}, {userData.location.region}</p>
                 </div>
+
                 <div className='info'>
                   <h2>Timezone</h2>
                   <p>UTC{userData.location.timezone}</p>
                 </div>
+
                 <div className='info'>
                   <h2>ISP</h2>
                   <p>{userData.isp}</p>
